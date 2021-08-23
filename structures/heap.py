@@ -29,18 +29,16 @@ class MinHeap:
             else:
                 break
 
-    def down(self, i):
-        while (self.left(i)) <= self.current_size - 1:
-            mc = self.min_child(i)
-            if self._heap_list[i] > self._heap_list[mc]:
-                tmp = self._heap_list[i]
-                self._heap_list[i] = self._heap_list[mc]
-                self._heap_list[mc] = tmp
-            i = mc
+    def down(self, index):
+        while (self.left(index)) <= self.current_size - 1:
+            min_child = self.min_child(index)
+            if self._heap_list[index] > self._heap_list[min_child]:
+                self._heap_list[index], self._heap_list[min_child] = self._heap_list[min_child], self._heap_list[index]
+            index = min_child
 
-    def min_child(self, i):
-        right = self.right(i)
-        left = self.left(i)
+    def min_child(self, index):
+        right = self.right(index)
+        left = self.left(index)
         if right > self.current_size - 1:
             return left
         else:
@@ -80,36 +78,3 @@ class MinHeap:
 
     def __eq__(self, other):
         return self._heap_list == list(other)
-
-
-# b = MinHeap()
-# b.insert(1)
-# print(b)
-# b.insert(10)
-# print(b)
-# b.insert(3)
-# print(b)
-# b.insert(5)
-# print(b)
-# b.insert(2)
-# print(b)
-
-# b.del_min()
-# print(b)
-
-# b.insert(5)
-# b.insert(9)
-# b.insert(11)
-# b.insert(14)
-# b.insert(18)
-# b.insert(19)
-# b.insert(21)
-# b.insert(33)
-# b.insert(17)
-# b.insert(27)
-# b.build_heap([9, 6, 5, 2, 3])
-# b.del_min()
-# print(b)
-
-
-

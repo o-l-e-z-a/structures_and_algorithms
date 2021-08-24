@@ -37,4 +37,3 @@ class PriorityMinQueue(MinHeap):
             arr[i] = Node(*arr[i])
         super().build_heap(arr)
 
-

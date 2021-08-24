@@ -1,6 +1,7 @@
 import unittest
 
 from structures.heap import MinHeap
+from structures.linked_list import LinkedList
 from structures.priority_queue import PriorityMinQueue
 from structures.queue import Queue
 from structures.stack import Stack
@@ -90,6 +91,23 @@ class TestStack(unittest.TestCase):
         stack.pop()
         stack.pop()
         self.assertEqual(stack, [4])
+
+
+class TestLinkedList(unittest.TestCase):
+
+    def test_list(self):
+        l = LinkedList()
+        l.add_to_end(23)
+        l.add_to_end(15)
+        l.add_to_end(3)
+        l.add_to_start(99)
+        l.add_to_end(100)
+        l_1 = str(l)
+        self.assertEqual(l_1, ' 99 23 15 3 100')
+        l.remove(3)
+        l_2 = str(l)
+        self.assertEqual(l_2, ' 99 23 15 100')
+        self.assertEqual(15, l.get(2))
 
 
 if __name__ == '__main__':

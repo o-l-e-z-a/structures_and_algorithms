@@ -9,12 +9,12 @@ class GraphTestCase(unittest.TestCase):
                       '7': [], '8': [], '9': []}
 
     def test_something(self):
-        self.assertEqual(bfs(self.graph, '0', '0'), True)
-        self.assertEqual(bfs(self.graph, '0', '9'), True)
-        self.assertEqual(bfs(self.graph, '0', '7'), True)
-        self.assertEqual(bfs(self.graph, '0', '5'), True)
-        self.assertEqual(bfs(self.graph, '0', '66'), False)
-        self.assertEqual(bfs(self.graph, '0', '11'), False)
+        self.assertEqual(bfs(self.graph, '0', '0'), ['0'])
+        self.assertEqual(bfs(self.graph, '0', '9'), ['0', '2', '3', '6', '9'])
+        self.assertEqual(bfs(self.graph, '0', '7'), ['0', '2', '3', '5', '7'])
+        self.assertEqual(bfs(self.graph, '0', '5'),  ['0', '2', '3', '5'])
+        self.assertIsNone(bfs(self.graph, '0', '66'))
+        self.assertIsNone(bfs(self.graph, '0', '11'))
 
 
 if __name__ == '__main__':

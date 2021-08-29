@@ -1,7 +1,7 @@
 from collections import deque
 
 
-# def bfs(graph, root, value):
+# def bfs(graph: dict, set_start_value: str, value: str):
 #     """ возвращает True, если элемент существует, иначе - None"""
 #     search_deque = deque()
 #     search_deque += graph[root]
@@ -18,7 +18,7 @@ from collections import deque
 #     return False
 
 
-def bfs(graph, start, value):
+def bfs(graph: dict, start: str, value: str):
     """ возвращает наикратчайший путь, если элемента не сущестует - None"""
     search_deque = deque()
     search_deque += start

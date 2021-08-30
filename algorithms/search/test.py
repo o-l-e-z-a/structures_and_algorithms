@@ -1,6 +1,7 @@
 import unittest
 
-from algorithms.search.KMP import kmp
+from algorithms.search.boyer_moore_horspool import bmh
+from algorithms.search.knuth_morris_pratt import kmp
 from algorithms.search.binary_search import binary_search
 
 
@@ -36,6 +37,22 @@ class KMPTest(unittest.TestCase):
     def test_fail_kmp(self):
         indices = kmp(self.text, self.fail_search_value)
         self.assertEqual(indices, [])
+
+
+class BMHTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.text = 'abacadabadacdababdcadcccabbabcabab'
+        self.search_value = 'abab'
+        self.fail_search_value = 'abaz'
+
+    def test_kmp(self):
+        result = bmh(self.text, self.search_value)
+        self.assertEqual(result, 13)
+
+    def test_fail_kmp(self):
+        result = bmh(self.text, self.fail_search_value)
+        self.assertEqual(result, -1)
+
 
 if __name__ == '__main__':
     unittest.main()

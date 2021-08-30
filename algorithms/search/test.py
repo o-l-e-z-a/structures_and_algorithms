@@ -1,8 +1,10 @@
 import unittest
+
+from algorithms.search.KMP import kmp
 from algorithms.search.binary_search import binary_search
 
 
-class SearchTest(unittest.TestCase):
+class BinarySearchTest(unittest.TestCase):
     def setUp(self) -> None:
         self.list_1 = list(range(100))
 
@@ -20,6 +22,20 @@ class SearchTest(unittest.TestCase):
         self.assertEqual(None, binary_search(self.list_1, -1))
         self.assertEqual(None, binary_search(self.list_1, 101))
 
+
+class KMPTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.text = 'abacadabadacdababdcadcccabbabcabab'
+        self.search_value = 'abab'
+        self.fail_search_value = 'abaz'
+
+    def test_kmp(self):
+        indices = kmp(self.text, self.search_value)
+        self.assertEqual(indices, [13, 30])
+
+    def test_fail_kmp(self):
+        indices = kmp(self.text, self.fail_search_value)
+        self.assertEqual(indices, [])
 
 if __name__ == '__main__':
     unittest.main()
